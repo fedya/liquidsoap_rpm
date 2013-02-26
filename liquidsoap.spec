@@ -1,23 +1,17 @@
 #
 # spec file for liquidsoap
 #
-Summary: Used for generating the stream of net radios written by the Savonet project
-%define version 1.0.1
-%define prefix /usr
-%define name liquidsoap
-%define libdir lib
 %ifarch x86_64
-%define libdir lib64
 %define _host %{nil}
 %define _build %{nil}
-
 %endif
-Name: %{name}
-Prefix: %{prefix}
-Version: %{version}
+
+Name: liquidsoap
+Version: 1.0.1
 Release: 2%{?dist}
 License: GPLv2
 Group: Applications/Multimedia
+Summary: Used for generating the stream of net radios written by the Savonet project
 Source: http://downloads.sourceforge.net/project/savonet/${name}/${version}/%{name}-%{version}-full.tar.bz2
 Source1: http://downloads.sourceforge.net/project/ocaml-magic/ocaml-magic/0.7/ocaml-magic-0.7.3.tar.gz 
 Source2: liquidsoap.init-dist
@@ -103,7 +97,7 @@ echo `env`
 
 %build
 echo `pwd`
-PKG_CONFIG_PATH=/usr/%libdir/pkgconfig/
+PKG_CONFIG_PATH=%_libdir/pkgconfig/
 export PKG_CONFIG_PATH
 ./bootstrap
 %configure #--with-user=$(id -un) --with-group=$(id -gn)
@@ -154,10 +148,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(0644,root,root)
 %attr(755,root,root) %{_initddir}/liquidsoap
 %defattr(-,root,root) 
-/usr/bin/%{name}
+%{_bindir}/%{name}
 %config /etc/%{name}/radio.liq.example
 %config(noreplace) /etc/logrotate.d/%{name}
-/usr/%libdir/%{name}
+%{_libdir}/%{name}
 %doc /usr/share/doc/%{name}-%{version}
 %doc /usr/share/man/man1/%{name}.1.gz
 
