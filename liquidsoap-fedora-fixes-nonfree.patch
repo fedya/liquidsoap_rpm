@@ -1,0 +1,589 @@
+diff -rupN liquidsoap-1.0.1-full/ocaml-alsa-0.2.1/src/alsa_stubs.c liquidsoap-1.0.1-full-modified/ocaml-alsa-0.2.1/src/alsa_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-alsa-0.2.1/src/alsa_stubs.c	2011-05-12 16:42:32.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-alsa-0.2.1/src/alsa_stubs.c	2012-08-03 11:30:45.506826067 -0400
+@@ -17,7 +17,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with ocaml-alsa; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * @author Samuel Mimram
+  */
+diff -rupN liquidsoap-1.0.1-full/ocaml-ao-0.2.0/src/ao_stubs.c liquidsoap-1.0.1-full-modified/ocaml-ao-0.2.0/src/ao_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-ao-0.2.0/src/ao_stubs.c	2010-06-21 08:32:39.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-ao-0.2.0/src/ao_stubs.c	2012-08-03 11:33:17.385927317 -0400
+@@ -14,8 +14,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+- * USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA 
+  */
+ 
+ #include <ao/ao.h>
+diff -rupN liquidsoap-1.0.1-full/ocaml-bjack-0.1.3/src/jack_stubs.c liquidsoap-1.0.1-full-modified/ocaml-bjack-0.1.3/src/jack_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-bjack-0.1.3/src/jack_stubs.c	2009-10-12 00:46:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-bjack-0.1.3/src/jack_stubs.c	2012-08-03 11:30:45.449826780 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-bjack; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-bjack-0.1.3/src/jack_wrapper.c liquidsoap-1.0.1-full-modified/ocaml-bjack-0.1.3/src/jack_wrapper.c
+--- liquidsoap-1.0.1-full/ocaml-bjack-0.1.3/src/jack_wrapper.c	2009-10-12 00:46:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-bjack-0.1.3/src/jack_wrapper.c	2012-08-03 11:30:45.518825916 -0400
+@@ -16,7 +16,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-taglib; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA 
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-bjack-0.1.3/src/jack_wrapper.h liquidsoap-1.0.1-full-modified/ocaml-bjack-0.1.3/src/jack_wrapper.h
+--- liquidsoap-1.0.1-full/ocaml-bjack-0.1.3/src/jack_wrapper.h	2009-10-12 00:46:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-bjack-0.1.3/src/jack_wrapper.h	2012-08-03 11:30:45.508826041 -0400
+@@ -16,7 +16,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-taglib; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA 
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-dssi-0.1.0/configure.ac liquidsoap-1.0.1-full-modified/ocaml-dssi-0.1.0/configure.ac
+--- liquidsoap-1.0.1-full/ocaml-dssi-0.1.0/configure.ac	2011-07-04 04:51:51.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-dssi-0.1.0/configure.ac	2012-08-01 20:34:28.987273716 -0400
+@@ -42,10 +42,12 @@ else
+ fi
+ AC_SUBST(OCAMLLADSPA_INC)
+ CFLAGS="-I$OCAMLLADSPA_INC $CFLAGS"
+-AC_CHECK_HEADERS([ocaml_ladspa.h],[ac_have_ladspa="yes"])
+-if test "$ac_have_ladspa" != "yes"; then
+-   AC_MSG_ERROR([ocaml-ladspa headers not found.])
+-fi
++# For some reason these, headers aren't found.
++# but they sure are there.
++#AC_CHECK_HEADERS([ocaml_ladspa.h],[ac_have_ladspa="yes"])
++#if test "$ac_have_ladspa" != "yes"; then
++#   AC_MSG_ERROR([ocaml-ladspa headers not found.])
++#fi
+ 
+ # substitutions to perform
+ AC_SUBST(VERSION)
+diff -rupN liquidsoap-1.0.1-full/ocaml-dssi-0.1.0/src/dssi_stubs.c liquidsoap-1.0.1-full-modified/ocaml-dssi-0.1.0/src/dssi_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-dssi-0.1.0/src/dssi_stubs.c	2011-07-04 04:51:51.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-dssi-0.1.0/src/dssi_stubs.c	2012-08-03 11:30:45.510826016 -0400
+@@ -18,7 +18,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with Ocaml-mad; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
+ 
+diff -rupN liquidsoap-1.0.1-full/ocaml-duppy-0.4.2/src/duppy_stubs.c liquidsoap-1.0.1-full-modified/ocaml-duppy-0.4.2/src/duppy_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-duppy-0.4.2/src/duppy_stubs.c	2011-10-08 09:21:02.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-duppy-0.4.2/src/duppy_stubs.c	2012-08-03 11:30:45.520825892 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with Ocaml-duppy; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  */
+ 
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/drms.h liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/drms.h
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/drms.h	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/drms.h	2012-08-03 11:30:45.502826116 -0400
+@@ -18,7 +18,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  *****************************************************************************/
+ 
+ extern void *drms_alloc( char *psz_homedir );
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/faad_stubs.c liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/faad_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/faad_stubs.c	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/faad_stubs.c	2012-08-03 11:30:45.446826816 -0400
+@@ -16,7 +16,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with Ocaml-faad; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
+ /**
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4atom.c liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4atom.c
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4atom.c	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4atom.c	2012-08-03 11:30:45.463826604 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4ff.c liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4ff.c
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4ff.c	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4ff.c	2012-08-03 11:30:45.443826854 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4ff.h liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4ff.h
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4ff.h	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4ff.h	2012-08-03 11:30:45.432826992 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4ffint.h liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4ffint.h
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4ffint.h	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4ffint.h	2012-08-03 11:30:45.522825867 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4meta.c liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4meta.c
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4meta.c	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4meta.c	2012-08-03 11:30:45.487826304 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4sample.c liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4sample.c
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4sample.c	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4sample.c	2012-08-03 11:30:45.474826467 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4util.c liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4util.c
+--- liquidsoap-1.0.1-full/ocaml-faad-0.3.0/src/mp4util.c	2011-06-30 15:36:42.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-faad-0.3.0/src/mp4util.c	2012-08-03 11:30:45.456826692 -0400
+@@ -14,7 +14,7 @@
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program; if not, write to the Free Software
+-** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ **
+ ** Any non-GPL usage of this software or parts of this software is strictly
+ ** forbidden.
+diff -rupN liquidsoap-1.0.1-full/ocaml-flac-0.1.1/src/flac_stubs.c liquidsoap-1.0.1-full-modified/ocaml-flac-0.1.1/src/flac_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-flac-0.1.1/src/flac_stubs.c	2012-06-25 23:28:29.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-flac-0.1.1/src/flac_stubs.c	2012-08-03 11:30:45.491826254 -0400
+@@ -10,7 +10,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  *
+  * Chunks of this code have been borrowed and influenced 
+  * by flac/decode.c and the flac XMMS plugin.
+diff -rupN liquidsoap-1.0.1-full/ocaml-flac-0.1.1/src/flac_stubs.h liquidsoap-1.0.1-full-modified/ocaml-flac-0.1.1/src/flac_stubs.h
+--- liquidsoap-1.0.1-full/ocaml-flac-0.1.1/src/flac_stubs.h	2012-06-25 23:28:29.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-flac-0.1.1/src/flac_stubs.h	2012-08-03 11:30:45.501826128 -0400
+@@ -10,7 +10,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  *
+  * Chunks of this code have been borrowed and influenced
+  * by flac/decode.c and the flac XMMS plugin.
+diff -rupN liquidsoap-1.0.1-full/ocaml-flac-0.1.1/src/ogg_flac_stubs.c liquidsoap-1.0.1-full-modified/ocaml-flac-0.1.1/src/ogg_flac_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-flac-0.1.1/src/ogg_flac_stubs.c	2012-06-25 23:28:29.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-flac-0.1.1/src/ogg_flac_stubs.c	2012-08-03 11:30:45.428827041 -0400
+@@ -10,7 +10,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  *
+  * Chunks of this code have been borrowed and influenced
+  * by flac/decode.c and the flac XMMS plugin.
+diff -rupN liquidsoap-1.0.1-full/ocaml-gavl-0.1.4/src/gavl_stubs.c liquidsoap-1.0.1-full-modified/ocaml-gavl-0.1.4/src/gavl_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-gavl-0.1.4/src/gavl_stubs.c	2011-05-12 16:53:58.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-gavl-0.1.4/src/gavl_stubs.c	2012-08-03 11:30:45.532825741 -0400
+@@ -15,7 +15,7 @@
+ 
+   You should have received a copy of the GNU General Public License
+   along with Ocaml-gavl; if not, write to the Free Software
+-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+ 
+ #include <caml/custom.h>
+diff -rupN liquidsoap-1.0.1-full/ocaml-ladspa-0.1.4/src/ladspa_stubs.c liquidsoap-1.0.1-full-modified/ocaml-ladspa-0.1.4/src/ladspa_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-ladspa-0.1.4/src/ladspa_stubs.c	2011-10-04 09:17:54.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-ladspa-0.1.4/src/ladspa_stubs.c	2012-08-03 11:30:45.499826154 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-ladspa; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-ladspa-0.1.4/src/ocaml_ladspa.h liquidsoap-1.0.1-full-modified/ocaml-ladspa-0.1.4/src/ocaml_ladspa.h
+--- liquidsoap-1.0.1-full/ocaml-ladspa-0.1.4/src/ocaml_ladspa.h	2011-10-04 09:17:54.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-ladspa-0.1.4/src/ocaml_ladspa.h	2012-08-03 11:30:45.468826541 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-ladspa; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-lame-0.3.1/src/lame_stubs.c liquidsoap-1.0.1-full-modified/ocaml-lame-0.3.1/src/lame_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-lame-0.3.1/src/lame_stubs.c	2011-10-04 07:39:09.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-lame-0.3.1/src/lame_stubs.c	2012-08-03 11:30:45.451826754 -0400
+@@ -17,7 +17,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with ocaml-lame; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
+ /* $Id$ */
+diff -rupN liquidsoap-1.0.1-full/ocaml-mad-0.4.4/src/mad_stubs.c liquidsoap-1.0.1-full-modified/ocaml-mad-0.4.4/src/mad_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-mad-0.4.4/src/mad_stubs.c	2011-10-04 07:35:26.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-mad-0.4.4/src/mad_stubs.c	2012-08-03 11:30:45.535825704 -0400
+@@ -19,7 +19,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with Ocaml-mad; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * @author Samuel Mimram, David Baelde
+  */
+diff -rupN liquidsoap-1.0.1-full/ocaml-mm-0.2.0/src/audio_c.c liquidsoap-1.0.1-full-modified/ocaml-mm-0.2.0/src/audio_c.c
+--- liquidsoap-1.0.1-full/ocaml-mm-0.2.0/src/audio_c.c	2011-10-04 07:48:05.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-mm-0.2.0/src/audio_c.c	2012-08-03 11:30:45.458826667 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-mm; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-mm-0.2.0/src/image_c.c liquidsoap-1.0.1-full-modified/ocaml-mm-0.2.0/src/image_c.c
+--- liquidsoap-1.0.1-full/ocaml-mm-0.2.0/src/image_c.c	2011-10-04 07:48:05.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-mm-0.2.0/src/image_c.c	2012-08-03 11:30:45.481826380 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-mm; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-ogg-0.4.3/src/ocaml-ogg.h liquidsoap-1.0.1-full-modified/ocaml-ogg-0.4.3/src/ocaml-ogg.h
+--- liquidsoap-1.0.1-full/ocaml-ogg-0.4.3/src/ocaml-ogg.h	2011-10-04 07:40:34.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-ogg-0.4.3/src/ocaml-ogg.h	2012-08-03 11:30:45.529825779 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-ogg; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-ogg-0.4.3/src/ogg_stubs.c liquidsoap-1.0.1-full-modified/ocaml-ogg-0.4.3/src/ogg_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-ogg-0.4.3/src/ogg_stubs.c	2011-10-04 07:40:34.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-ogg-0.4.3/src/ogg_stubs.c	2012-08-03 11:30:45.435826954 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-ogg; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-portaudio-0.2.0/src/portaudio_stubs.c liquidsoap-1.0.1-full-modified/ocaml-portaudio-0.2.0/src/portaudio_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-portaudio-0.2.0/src/portaudio_stubs.c	2011-07-02 16:03:12.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-portaudio-0.2.0/src/portaudio_stubs.c	2012-08-03 11:30:45.466826567 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-portaudio; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-schroedinger-0.1.0/src/schroedinger_stubs.c liquidsoap-1.0.1-full-modified/ocaml-schroedinger-0.1.0/src/schroedinger_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-schroedinger-0.1.0/src/schroedinger_stubs.c	2011-07-04 16:45:44.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-schroedinger-0.1.0/src/schroedinger_stubs.c	2012-08-03 11:30:45.527825804 -0400
+@@ -15,7 +15,7 @@
+ 
+   You should have received a copy of the GNU General Public License
+   along with Ocaml-schroedinger; if not, write to the Free Software
+-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+ 
+ /* The code here is inspired/stolen from ffmpeg2dirac */
+diff -rupN liquidsoap-1.0.1-full/ocaml-soundtouch-0.1.7/src/soundtouch_stubs.cc liquidsoap-1.0.1-full-modified/ocaml-soundtouch-0.1.7/src/soundtouch_stubs.cc
+--- liquidsoap-1.0.1-full/ocaml-soundtouch-0.1.7/src/soundtouch_stubs.cc	2011-10-04 05:40:11.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-soundtouch-0.1.7/src/soundtouch_stubs.cc	2012-08-03 11:30:45.454826716 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-soundtouch; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-speex-0.2.0/src/speex_stubs.c liquidsoap-1.0.1-full-modified/ocaml-speex-0.2.0/src/speex_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-speex-0.2.0/src/speex_stubs.c	2011-07-04 16:45:44.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-speex-0.2.0/src/speex_stubs.c	2012-08-03 11:30:45.440826892 -0400
+@@ -15,7 +15,7 @@
+ 
+   You should have received a copy of the GNU General Public License
+   along with Ocaml-speex; if not, write to the Free Software
+-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+ 
+ #include <caml/custom.h>
+diff -rupN liquidsoap-1.0.1-full/ocaml-taglib-0.2.0/src/taglib_stubs.cc liquidsoap-1.0.1-full-modified/ocaml-taglib-0.2.0/src/taglib_stubs.cc
+--- liquidsoap-1.0.1-full/ocaml-taglib-0.2.0/src/taglib_stubs.cc	2011-08-31 10:28:13.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-taglib-0.2.0/src/taglib_stubs.cc	2012-08-03 11:30:45.484826341 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with ocaml-taglib; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  *
+  * As a special exception to the GNU Library General Public License, you may
+  * link, statically or dynamically, a "work that uses the Library" with a publicly
+diff -rupN liquidsoap-1.0.1-full/ocaml-theora-0.3.0/src/theora_stubs.c liquidsoap-1.0.1-full-modified/ocaml-theora-0.3.0/src/theora_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-theora-0.3.0/src/theora_stubs.c	2011-07-04 16:45:44.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-theora-0.3.0/src/theora_stubs.c	2012-08-03 11:30:45.472826492 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with ocaml-theora; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
+ #include <caml/alloc.h>
+diff -rupN liquidsoap-1.0.1-full/ocaml-vorbis-0.6.1/src/vorbis_stubs.c liquidsoap-1.0.1-full-modified/ocaml-vorbis-0.6.1/src/vorbis_stubs.c
+--- liquidsoap-1.0.1-full/ocaml-vorbis-0.6.1/src/vorbis_stubs.c	2011-10-04 07:51:17.000000000 -0400
++++ liquidsoap-1.0.1-full-modified/ocaml-vorbis-0.6.1/src/vorbis_stubs.c	2012-08-03 11:30:45.496826192 -0400
+@@ -15,7 +15,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with Ocaml-vorbis; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+ 
+ /*
+diff -rupN liquidsoap-1.0.1-full/PACKAGES liquidsoap-1.0.1-full-modified/PACKAGES
+--- liquidsoap-1.0.1-full/PACKAGES	1969-12-31 19:00:00.000000000 -0500
++++ liquidsoap-1.0.1-full-modified/PACKAGES	2012-08-02 17:49:34.166827356 -0400
+@@ -0,0 +1,144 @@
++# Edit this file by (un)commenting the libraries that you (don't) want to
++# build in order to get the corresponding features in liquidsoap.
++
++# The default file has every dependency enabled.
++# It is certain that you don't need everything.
++# If you don't know why you should have something, uncomment it,
++# especially if it does not build for some reason.
++
++# It is useless to add savonet packages that are not listed below,
++# like ocaml-fetch, ocaml-smbclient, etc. These are not dependencies of
++# liquidsoap.
++
++
++# ============================================================================
++# Input/output
++# ============================================================================
++
++# Cry is the lib for streaming to icecast and compatible servers.
++ocaml-cry
++
++# AO is portable and stable, but it does only output.
++ocaml-ao
++
++# Portaudio is a portable audio library with both input and output.
++ocaml-portaudio
++
++# ALSA is only for LINUX, and is sometimes not working.
++ocaml-alsa
++
++# PulseAudio is a cross-plateform audio sound server. It is intended to
++# be a single replacement for sound support under linux, windows or OSX.
++ocaml-pulseaudio
++
++# JACK is an audio connection kit, designed for low latency
++# and easy communication between audio applications.
++ocaml-bjack
++
++# Gstreamer is a library for constructing graphs of media-handling components.
++# It is currently used to provide V4l inputs for liquidsoap
++ocaml-gstreamer
++
++# ============================================================================
++# Codecs
++# ============================================================================
++
++# MAD is for MP3 decoding.
++ocaml-mad
++
++# TAGLIB is for MP3 ID3 tag reading
++ocaml-taglib
++
++# LAME is for MP3 encoding.
++ocaml-lame
++
++# AACPLUS is for AAC+ encoding.
++#ocaml-aacplus
++
++# OGG is for ogg/vorbis and ogg/theora encoding and decoding
++ocaml-ogg
++
++# VORBIS is for ogg/vorbis encoding and decoding.
++# you need ocaml-ogg to enable ocaml-vorbis.
++ocaml-vorbis
++
++# SPEEX is for ogg/speex encoding and decoding
++# you need ocaml-ogg to enable ocaml-speex
++ocaml-speex
++
++# THEORA is for ogg/theora encoding and decoding
++# you need ocaml-ogg to enable ocaml-theora
++ocaml-theora
++
++# SCHROEDINGER is for ogg/dirac encoding and decoding
++# you need ocaml-ogg to enable ocaml-schroedinger
++ocaml-schroedinger
++
++# VOAACENC is for AAC encoding.
++#ocaml-voaacenc
++
++# FAAD for AAC decoding.
++ocaml-faad
++
++# FLAC is for flac, native and/or ogg (if using ocaml-ogg)
++# format decoding and encoding.
++ocaml-flac
++
++# ============================================================================
++# Sound processing
++# ============================================================================
++
++# LADSPA are audio plugins providing sound effects
++ocaml-ladspa
++
++# SoundTouch is for changing pitch and tempo of sound
++ocaml-soundtouch
++
++# Samplerate is for having better quality resampling
++ocaml-samplerate
++
++# ============================================================================
++# Video processing
++# ============================================================================
++
++# GAVL converts from and to many formats,
++# is very efficient and has a quality setting for
++# tweaking load vs. quality of the conversion.
++# It is the recommended module to use with video
++ocaml-gavl
++
++# ============================================================================
++# Sound synthesis
++# ============================================================================
++
++# DSSI is a standard for synthesizer plugins
++ocaml-dssi
++
++# ============================================================================
++# Various modules
++# ============================================================================
++
++# Xmlplaylist allow support for various xml format, such as rss, podcast, etc..
++#ocaml-xmlplaylist
++
++# Lastfm allow support for lastfm radios and the audioscrobbler protocol
++# It should be listed *after* ocaml-xmlplaylist in this file
++#ocaml-lastfm
++
++# A library supporting the OSC protocol to have external controls
++# such as faders
++ocaml-lo
++
++# ============================================================================
++# Add Fedora specific sources that aren't available in normal yum repos
++# ============================================================================
++ocaml-magic
++
++# ============================================================================
++# Finally, the mandatory lib dtools, duppy and liquidsoap...
++# ============================================================================
++
++ocaml-dtools
++ocaml-duppy
++ocaml-mm
++liquidsoap
